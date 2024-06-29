@@ -20,8 +20,4 @@ wifi流程：
 
 
 #wpa_supplicant
-LL层和SUPP SM层的交互比较简单，主要包括三个步骤。
-
-1、LL层收到EAP数据包后，将其保存在eapReqData变量中，然后设置eapReq变量为TRUE。这个变量的改变对SUPP SM层来说是一个触发信号（signal）。SUPP SM可能会发生状态转换。  
-2、SUPP SM层从eapReqData中取出数据后进行处理。如果有需要回复的数据，则设置eapResp值为TRUE，否则设置eapNoResp值为TRUE。回复数据存储在eapRespData中。LL层将发送此回复包。  
-3、如果SUPP SM完成身份验证后，它将设置eapSuccess或eapFailure变量以告知LL层其验证结果。eapSuccess为TRUE，表明验证成功。eapFailure为TRUE，则验证失败。  
+LL SM层、SUPP SM层、EAP SM层
