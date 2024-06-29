@@ -19,7 +19,7 @@ wifi流程：
   
 
 
-
+#wpa_supplicant
 1、LL层和SUPP SM层交互变量
 LL层和SUPP SM层的交互比较简单，主要包括三个步骤。
 
