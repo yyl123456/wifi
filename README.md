@@ -19,5 +19,5 @@ wifi流程：
   
 
 
-#wpa_supplicant
-LL SM层、SUPP SM层、EAP SM层
+#wpa_supplicant 
+LL层、SUPP SM层、EAP SM层
