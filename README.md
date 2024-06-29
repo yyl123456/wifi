@@ -6,7 +6,7 @@ https://github.com/WHJWNAVY/WIFI-DOCS/blob/48d23a2ec8268a098b16e2fa3e14de3e0b966
 
 
 
-wifi流程：
+# wifi流程：
 
 1、wep（4次auth）
 
@@ -19,5 +19,5 @@ wifi流程：
   
 
 
-#wpa_supplicant  
+# wpa_supplicant  
 LL层、SUPP SM层、EAP SM层
