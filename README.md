@@ -15,7 +15,9 @@ https://github.com/WHJWNAVY/WIFI-DOCS/blob/48d23a2ec8268a098b16e2fa3e14de3e0b966
 3、2次auth -> 2次assoc -> 多次握手（enterprise、EAP之上的802.1X）（可能涉及到TLS）
 
 4、SAE
+
   sim   4次auth                 -> 2次assoc -> eapol四次握手（personal）
+  
   open  2次auth(使用之前的PMKID) -> 2次assoc -> eapol四次握手（personal）
 
 
