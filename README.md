@@ -16,9 +16,9 @@ https://github.com/WHJWNAVY/WIFI-DOCS/blob/48d23a2ec8268a098b16e2fa3e14de3e0b966
 
 4、SAE
 
-        sim   4次auth                 -> 2次assoc -> eapol四次握手（personal）
+        sim   4次auth（计算PMKID）       -> 2次assoc -> eapol四次握手（personal）
   
-        open  2次auth(使用之前的PMKID) -> 2次assoc -> eapol四次握手（personal）
+        open  2次auth（使用之前的PMKID） -> 2次assoc -> eapol四次握手（personal）
 
 
 四次握手RSN：TKIP（WPA）、CCMP（WPA2）、SAE（WPA3）
