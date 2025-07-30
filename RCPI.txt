@@ -1,0 +1,26 @@
+需要说明的是，roaming的完成既要当前连线AP的信号足够差，周围也要有适合roaming的AP。driver会考虑RSSI/Band等一系列因素，如果不满足条件是不会连过去的。
+若要调整阈值，请先帮忙确认下fw版本 iwpriv wlan0 driver version
+然后确认下当前阈值设定，可以通过命令确认
+iwpriv wlan0 driver "get_chip RoamingRCPIValue"
+iwpriv wlan0 driver "get_chip RoamingRCPIPoorValue"
+iwpriv wlan0 driver "get_chip RoamingRCPIGoodValue"
+一般来说，该阈值可以通过/vendor/firmware/wifi.cfg文件配置
+通过在wifi.cfg中增加/修改如下条目来控制：
+RoamingRCPIGoodValue 设定值
+RoamingRCPIPoorValue 设定值
+==>这个就是预设的RCPI GOOD/POORT门限，这里的单位都是RCPI， RSSI=（RCPI-220）/2，这里就是RSSI -65，这两个都是用于计算Roaming门限值的
+
+
+case1: 如果连线的RCPI超过这个GOOD门限，FW就会设置roaming的high threshold到最大RCPI 220，即不存在high threshold，low threshold设置到(RCPI – delta*2) > GOOD? GOOD : (RCPI – delta*2)，其中delta默认值是8，以-65为例，即如果连线的RSSI大于-57，那么low threshold就是-65
+
+
+case2: 如果连线的RCPI在POOR到GOOD之间，FW就会将low threshold设置到RCPI – delta，high threshold设定为RCPI + delta*2
+
+
+case3: 如果连线的RCPI低于POOR，FW就会将low threshold设置到RCPI – delta/2，high threshold设定为RCPI + delta*2
+
+
+注意：无论RSSI超过high threshold后者低于low threshold都会导致HW触发roaming中断给FW，但是只有低于low threashold才会导致driver roaming发生，高于high threshold只会让FW基于当前的RSSI重新计算high/low门限，算法还是刚刚上面列出来的那些
+RoamingRCPIDelta0 设定值
+RoamingRCPIDelta1 设定值
+==>RoamingRCPIDelta0 就是上面case1和case2里面用的delta，RoamingRCPIDelta1 是case3里面用的
